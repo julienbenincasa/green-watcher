@@ -4,7 +4,7 @@
 /*  --- ---  ALl  --- --- */
 
 body {
-  background-color: #f4f2f5;
+  background-color: #fff;
   margin: 0;
   padding: 0;
   min-width: 24rem;
@@ -23,7 +23,11 @@ body {
   transform: scale(.9);
 }
 
-
+a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*  --- ---  HEADER  --- --- */
 
@@ -79,6 +83,7 @@ main {
 /*  --- ---  FOOTER  --- --- */
 
 footer {
+  font-weight: 600;
   height: 2rem;
   width: 100%;
   padding: 10px 0;
@@ -95,11 +100,6 @@ footer {
 footer div{
   height: 100%;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-footer div a{
   display: flex;
   justify-content: center;
   align-items: center;
