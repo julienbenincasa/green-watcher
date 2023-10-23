@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Green Watcher",
+  "description": "Chrome extension to track user-triggered polluting actions",
+  "version": "1.0",
+  "action": {
+    "default_popup": "dashboard.html",
+    "default_icon": "greentech.png"
+  }
+}
