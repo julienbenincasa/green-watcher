@@ -1,9 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+/*  --- ---  ALl  --- --- */
+
 body {
-  background-color: #ffffff;
-  font-family: Arial, sans-serif;
+  background-color: #f4f2f5;
   margin: 0;
   padding: 0;
   min-width: 24rem;
@@ -11,42 +12,103 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.icon{
+  height: 2rem;
+  width: 2rem;
+  margin: 0 10px;
+  transition: all .2s ease-in-out;
+}
+
+.icon:hover{
+  transform: scale(.9);
+}
+
+
+
+/*  --- ---  HEADER  --- --- */
+
 header {
-  background-color: #21a366;
+  background-color: #5cbc9d;
   color: #ffffff;
   text-align: center;
-  padding: 10px;
   display: flex;
-  height: 4.5rem;
+  height: 3rem;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: .5rem 1rem;
+}
+
+header div{
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 header h1 {
   margin: 0;
+  font-size: 1.2rem;
+}
+
+.header_logo{
+  justify-content: left;
+  width: 70%;
 }
 
 .logo {
-  height: 80%;
+  height: 70%;
   width: auto;
-  transition: .3s ease-in-out;
+  margin-right: 10px;
 }
 
-.logo:hover{
-  transform: scale(1.1);
+.header_settings{
+  justify-content: right;
+  width: 30%;
 }
+.header_icon{
+  height: 50%;
+}
+
+/*  --- ---  MAIN  --- --- */
 
 main {
   padding: 20px;
   height: 20rem;
 }
 
+
+/*  --- ---  FOOTER  --- --- */
+
 footer {
-  background-color: #21a366;
+  height: 2rem;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #5cbc9d;
   color: #ffffff;
   text-align: center;
-  padding: 10px;
   bottom: 0;
-  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer div{
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer div a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer div.settings{
+  right: 0;
+  top: 0;
+}
+footer div.power{
+  left: 0;
+  top: 0;
 }
