@@ -1,1 +1,0 @@
-console.log('Green Watcher : script loaded')
