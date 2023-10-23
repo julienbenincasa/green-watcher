@@ -4,7 +4,9 @@
   "description": "Chrome extension to track user-triggered polluting actions",
   "version": "1.0",
   "action": {
-    "default_popup": "dashboard.html",
-    "default_icon": "greentech.png"
+    "default_popup": "dashboard.html"
+  },
+  "icons": {
+    "48": "img/logo/48.png"
   }
 }

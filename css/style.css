@@ -1,0 +1,44 @@
+    body {
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-width: 24rem;
+        max-width: 34rem;
+      }
+
+      header {
+        background-color: #21a366;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        display: flex;
+        height: 4.5rem;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem;
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
+      .logo {
+        height: 80%;
+        width: auto;
+      }
+
+      main {
+        padding: 20px;
+        height: 20rem;
+      }
+
+      footer {
+        background-color: #21a366;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
