@@ -9,6 +9,17 @@ chrome.runtime.onInstalled.addListener(() => {
 
 const activeRequests = {};
 
+// Set up a timer to clean up activeRequests (> 3 min.) every 3 minutes (180,000 milliseconds)
+setInterval(() => {
+  const currentTime = performance.now();
+  for (const requestId in activeRequests) {
+    const requestInfo = activeRequests[requestId];
+    if (requestInfo && currentTime - requestInfo.startTime > 180000) {
+      delete activeRequests[requestId];
+    }
+  }
+}, 180000);
+
 chrome.webRequest.onBeforeRequest.addListener(
   function (details) {
     chrome.storage.session.get(['extensionState'], (result) => {
