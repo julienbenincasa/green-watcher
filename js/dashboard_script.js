@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     activate(true);
     await chrome.action.setIcon({
       path: {
-        96: "../img/logo/logo_ico.png",
+        96: "../img/logo/96/logo.png",
       },
     });
     logoOn.add;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     activate(false);
     await chrome.action.setIcon({
       path: {
-        96: "../img/logo/logo_red_ico.png",
+        96: "../img/logo/96/logo_red.png",
       },
     });
   });
