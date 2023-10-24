@@ -2,7 +2,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.session.set({ extensionState: "OFF" });
   chrome.action.setIcon({
     path: {
-      96: "../img/logo/logo_red_ico.png",
+      96: "../img/logo/logo_red.png",
     },
   });
 });
@@ -22,8 +22,8 @@ setInterval(() => {
 
 chrome.webRequest.onBeforeRequest.addListener(
   function (details) {
-    chrome.storage.session.get(['extensionState'], (result) => {
-      if (result.extensionState === 'OFF') {
+    chrome.storage.session.get(["extensionState"], (result) => {
+      if (result.extensionState === "OFF") {
         return;
       }
       activeRequests[details.requestId] = { startTime: performance.now() };
@@ -35,8 +35,8 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 chrome.webRequest.onCompleted.addListener(
   function (details) {
-    chrome.storage.session.get(['extensionState'], (result) => {
-      if (result.extensionState === 'OFF') {
+    chrome.storage.session.get(["extensionState"], (result) => {
+      if (result.extensionState === "OFF") {
         return;
       }
       const requestInfo = activeRequests[details.requestId];
@@ -47,7 +47,7 @@ chrome.webRequest.onCompleted.addListener(
       const requestTime = endTime - requestInfo.startTime;
       const responseHeaders = details.responseHeaders;
       let responseSize = 0;
-  
+
       for (const header of responseHeaders) {
         if (header.name.toLowerCase() === "content-length") {
           responseSize = parseInt(header.value);
@@ -59,7 +59,6 @@ chrome.webRequest.onCompleted.addListener(
       );
       delete activeRequests[details.requestId];
     });
-    
   },
   { urls: ["<all_urls>"] },
   ["responseHeaders"]
