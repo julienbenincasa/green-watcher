@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     activate(true);
     await chrome.action.setIcon({
       path: {
-        96: "../img/logo/96/logo.png",
+        96: "../img/logo/48/logo_green.png",
       },
     });
     logoOn.add;
@@ -32,16 +32,20 @@ document.addEventListener("DOMContentLoaded", function () {
     activate(false);
     await chrome.action.setIcon({
       path: {
-        96: "../img/logo/96/logo_red.png",
+        96: "../img/logo/48/logo_grey.png",
       },
     });
   });
 
-  chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  chrome.runtime.onMessage.addListener(function (
+    message,
+    sender,
+    sendResponse
+  ) {
     if (message.completedRequestCount !== undefined) {
       // Update the UI with the completed request count
-      document.getElementById("request-counter").textContent = message.completedRequestCount;
+      document.getElementById("request-counter").textContent =
+        message.completedRequestCount;
     }
   });
-
 });
