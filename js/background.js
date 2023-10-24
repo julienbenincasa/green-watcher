@@ -33,6 +33,8 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["requestBody"]
 );
 
+let completedRequestCount = 0;
+
 chrome.webRequest.onCompleted.addListener(
   function (details) {
     chrome.storage.session.get(["extensionState"], (result) => {
@@ -58,6 +60,10 @@ chrome.webRequest.onCompleted.addListener(
         `Requête ${details.url}, Temps de requête : ${requestTime} ms, Poids de la réponse : ${responseSize} octets.`
       );
       delete activeRequests[details.requestId];
+      // Increment the completedRequestCount
+      completedRequestCount++;
+      // Send a message to the popup script with the updated count
+      chrome.runtime.sendMessage({ completedRequestCount });
     });
   },
   { urls: ["<all_urls>"] },

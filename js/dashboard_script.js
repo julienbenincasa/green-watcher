@@ -36,4 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
   });
+
+  chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    if (message.completedRequestCount !== undefined) {
+      // Update the UI with the completed request count
+      document.getElementById("request-counter").textContent = message.completedRequestCount;
+    }
+  });
+
 });

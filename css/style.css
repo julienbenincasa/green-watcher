@@ -29,6 +29,10 @@ a {
   align-items: center;
 }
 
+p {
+  margin: 0;
+}
+
 /*  --- ---  HEADER  --- --- */
 
 header {
@@ -77,6 +81,15 @@ header h1 {
 main {
   padding: 20px;
   height: 20rem;
+}
+
+.counter {
+  height: 25px;
+  border-radius: 5px;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 /*  --- ---  FOOTER  --- --- */
