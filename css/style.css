@@ -1,46 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
- table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  th, td {
-    word-break: break-all;
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    max-width: 25%;
-    overflow-x: scroll;
-  }
-
-  thead{
-    position: sticky;
-  }
-  tbody{
-    height: 15em;
-    overflow-y: scroll;
-  }
-
-  th {
-    background-color: #f2f2f2;
-    position: sticky;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  tr:nth-child(odd) {
-    background-color: #fff;
-  }
-
-  td:hover {
-    background-color: #5cbc9e5c;
-  }
-
-/*  --- ---  ALl  --- --- */
+/*  --- ---  ALL  --- --- */
 
 body {
   background-color: #fff;
