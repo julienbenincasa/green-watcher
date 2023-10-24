@@ -8,5 +8,16 @@
   },
   "icons": {
     "48": "img/logo/48.png"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
   }
 }

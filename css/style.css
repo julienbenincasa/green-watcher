@@ -12,18 +12,18 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.icon{
+.icon {
   height: 2rem;
   width: 2rem;
   margin: 0 10px;
   transition: all .2s ease-in-out;
 }
 
-.icon:hover{
+.icon:hover {
   transform: scale(.9);
 }
 
-a{
+a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +42,7 @@ header {
   padding: .5rem 1rem;
 }
 
-header div{
+header div {
   height: 100%;
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@ header h1 {
   font-size: 1.2rem;
 }
 
-.header_logo{
+.header_logo {
   justify-content: left;
   width: 70%;
 }
@@ -64,11 +64,11 @@ header h1 {
   margin-right: 10px;
 }
 
-.header_settings{
+.header_settings {
   justify-content: right;
   width: 30%;
 }
-.header_icon{
+.header_icon {
   height: 50%;
 }
 
@@ -97,18 +97,22 @@ footer {
   align-items: center;
 }
 
-footer div{
+footer div {
   height: 100%;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-footer div.settings{
+footer div.settings {
   right: 0;
   top: 0;
 }
-footer div.power{
+footer div.power {
   left: 0;
   top: 0;
+}
+
+#stop {
+  display: none;  
 }
