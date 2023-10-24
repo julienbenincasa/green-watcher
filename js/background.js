@@ -2,7 +2,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.session.set({ extensionState: "OFF" });
   chrome.action.setIcon({
     path: {
-      96: "../img/logo/logo_grey.png",
+      48: "../img/logo/logo_grey.png",
     },
   });
 });

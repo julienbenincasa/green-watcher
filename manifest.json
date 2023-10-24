@@ -7,7 +7,7 @@
     "default_popup": "dashboard.html"
   },
   "icons": {
-    "96": "img/logo/48/logo_grey.png"
+    "48": "img/logo/48/logo_green.png"
   },
   "background": {
     "service_worker": "js/background.js"
