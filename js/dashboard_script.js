@@ -1,42 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const startButton = document.getElementById("start");
-  const stopButton = document.getElementById("stop");
+    const startButton = document.getElementById("start");
+    const stopButton = document.getElementById("stop");
 
-  const activate = (bool) => {
-    startButton.style.display = bool === true ? "none" : "block";
-    stopButton.style.display = bool === true ? "block" : "none";
-  };
+    const activate = (bool) => {
+        chrome.storage.session.set({ extensionState: bool === true ? "ON" : "OFF" });
+        startButton.style.display = bool === true ? "none" : "block";
+        stopButton.style.display = bool === true ? "block" : "none";
+    };
 
-  chrome.action.getBadgeText({}, (badgeText) => {
-    if (badgeText === "ON") {
-      activate(true);
-    } else if (badgeText === "OFF") {
-      activate(false);
-    }
-  });
-
-  startButton.addEventListener("click", async () => {
-    const [tab] = await chrome.tabs.query({
-      active: true,
-      currentWindow: true,
+    chrome.storage.session.get(["extensionState"]).then((data) => {
+        data["extensionState"] === "ON" ? activate(true) : activate(false);
     });
-    await chrome.action.setBadgeText({ text: "ON" });
-    activate(true);
-  });
 
-  stopButton.addEventListener("click", async () => {
-    const [tab] = await chrome.tabs.query({
-      active: true,
-      currentWindow: true,
+    startButton.addEventListener("click", async () => {
+        activate(true);
+        await chrome.action.setIcon({
+            path: {
+            96: "../img/logo/logo_ico.png",
+            },
+        });
     });
-    await chrome.action.setBadgeText({ text: "OFF" });
-    activate(false);
-    await chrome.action.setIcon({
-      path: {
-        96: "../img/logo/logo_ico.png",
-      },
+
+    stopButton.addEventListener("click", async () => {
+        activate(false);
+        await chrome.action.setIcon({
+        path: {
+            96: "../img/logo/logo_red_ico.png",
+        },
+        });
     });
-    startButton.style.display = "none";
-    stopButton.style.display = "block";
-  });
 });
