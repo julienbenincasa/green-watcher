@@ -3,3 +3,8 @@ chrome.runtime.onInstalled.addListener(() => {
     text: "OFF",
   });
 });
+
+chrome.webRequest.onCompleted.addListener(
+  (details) => {console.log("onCompleted" + details.url);},
+  {urls: ["<all_urls>"]}
+);
