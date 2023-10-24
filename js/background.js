@@ -8,9 +8,15 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 const activeRequests = {};
+
 chrome.webRequest.onBeforeRequest.addListener(
   function (details) {
-    activeRequests[details.requestId] = { startTime: performance.now() };
+    chrome.storage.session.get(['extensionState'], (result) => {
+      if (result.extensionState === 'OFF') {
+        return;
+      }
+      activeRequests[details.requestId] = { startTime: performance.now() };
+    });
   },
   { urls: ["<all_urls>"] },
   ["requestBody"]
@@ -18,13 +24,19 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 chrome.webRequest.onCompleted.addListener(
   function (details) {
-    const requestInfo = activeRequests[details.requestId];
-    if (requestInfo) {
+    chrome.storage.session.get(['extensionState'], (result) => {
+      if (result.extensionState === 'OFF') {
+        return;
+      }
+      const requestInfo = activeRequests[details.requestId];
+      if (!requestInfo) {
+        return;
+      }
       const endTime = performance.now();
       const requestTime = endTime - requestInfo.startTime;
       const responseHeaders = details.responseHeaders;
       let responseSize = 0;
-
+  
       for (const header of responseHeaders) {
         if (header.name.toLowerCase() === "content-length") {
           responseSize = parseInt(header.value);
@@ -35,7 +47,8 @@ chrome.webRequest.onCompleted.addListener(
         `Requête ${details.url}, Temps de requête : ${requestTime} ms, Poids de la réponse : ${responseSize} octets.`
       );
       delete activeRequests[details.requestId];
-    }
+    });
+    
   },
   { urls: ["<all_urls>"] },
   ["responseHeaders"]
