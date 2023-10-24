@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
   
     startButton.addEventListener('click', async () => {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        await chrome.action.setBadgeText({ tabId: tab.id, text: 'ON' });
+        await chrome.action.setBadgeText({ text: 'ON' });
         startButton.style.display = 'none';
         stopButton.style.display = 'block';
     });
 
     stopButton.addEventListener('click', async () => {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        await chrome.action.setBadgeText({ tabId: tab.id, text: 'OFF' });
+        await chrome.action.setBadgeText({ text: 'OFF' });
         stopButton.style.display = 'none';
         startButton.style.display = 'block';
     });
