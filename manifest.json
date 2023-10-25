@@ -10,7 +10,8 @@
     "48": "img/logo/48/logo_green.png"
   },
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "js/background.js",
+    "type": "module"
   },
   "permissions": [
     "webRequest",

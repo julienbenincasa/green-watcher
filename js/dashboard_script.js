@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoOff = document.getElementById("logoOff");
   const checkData = document.getElementById("checkData");
   let requestSize;
-  let requestTime;
   let nbrRequest;
 
   const activate = (bool) => {
@@ -48,12 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
   ) {
     if (message.mesDonnees.completedRequestCount !== undefined) {
       requestSize = message.mesDonnees.requestSize;
-      requestTime = message.mesDonnees.requestTime;
       nbrRequest = message.mesDonnees.completedRequestCount;
+      footprint = message.mesDonnees.footprint;
 
-      document.getElementById("requestTime").textContent = requestTime;
       document.getElementById("requestSize").textContent = requestSize;
       document.getElementById("nbrRequest").textContent = nbrRequest;
+      document.getElementById("footprint").textContent = footprint;
     }
   });
 
@@ -63,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nbrRequest +
         "&requestSize=" +
         requestSize +
-        "&requestTime=" +
-        requestTime,
+        "&footprint=" + 
+        footprint,
       "_blank"
     );
   });

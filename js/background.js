@@ -1,3 +1,5 @@
+import { co2 } from "./co2/index.js";
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.session.set({ extensionState: "OFF" });
   chrome.action.setIcon({
@@ -35,7 +37,8 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 let completedRequestCount = 0;
 let requestSize = 0;
-let requestTime = 0;
+
+const oneByte = new co2({ model: "1byte" });
 
 chrome.webRequest.onCompleted.addListener(
   function (details) {
@@ -64,11 +67,10 @@ chrome.webRequest.onCompleted.addListener(
       delete activeRequests[details.requestId];
       completedRequestCount++;
       requestSize = requestSize + responseSize;
-      requestTime = requestTime + requestTimeRequest;
       var mesDonnees = {
         requestSize: requestSize,
-        requestTime: requestTime,
         completedRequestCount: completedRequestCount,
+        footprint: oneByte.perByte(requestSize).toFixed(2)
       };
 
       chrome.runtime.sendMessage({ mesDonnees });
