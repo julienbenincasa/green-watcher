@@ -1,5 +1,9 @@
 function formatBytes(bytes) {
-    if (bytes === 0) return '0B';
+    let result = {
+        formattedValue: 0,
+        unit: 'B'
+    }
+    if (bytes === 0) return result;
 
     const k = 1024;
     const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -7,10 +11,17 @@ function formatBytes(bytes) {
 
     const formattedValue = (bytes / Math.pow(k, i)).toFixed(2);
 
-    return `${formattedValue} ${sizes[i]}`;
+    result.formattedValue = formattedValue;
+    result.unit = sizes[i];
+
+    return result;
 }
 
 function formatGrams(grams) {
+    let result = {
+        formattedValue: 0,
+        unit: 'g'
+    }
     if (grams === 0) return '0g';
 
     const k = 1000;
@@ -23,7 +34,11 @@ function formatGrams(grams) {
     }
 
     const formattedValue = (i === 0 ? grams : grams.toFixed(2));
-    return `${formattedValue} ${units[i]}`;
+
+    result.formattedValue = formattedValue;
+    result.unit = units[i];
+
+    return result;
 }
 
 export {

@@ -50,9 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
       nbrRequest = message.mesDonnees.completedRequestCount;
       footprint = message.mesDonnees.footprint;
 
-      document.getElementById("requestSize").textContent = requestSize;
+      document.getElementById("requestSize").textContent = requestSize.formattedValue + " " + requestSize.unit;
       document.getElementById("nbrRequest").textContent = nbrRequest;
-      document.getElementById("footprint").textContent = footprint;
+      document.getElementById("footprint").textContent = footprint.formattedValue + " " + footprint.unit;
     }
   });
 
@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "https://greenwatcher.vercel.app/?nbrRequest=" +
         nbrRequest +
         "&requestSize=" +
-        requestSize +
+        JSON.stringify(requestSize) +
         "&footprint=" + 
-        footprint,
+        JSON.stringify(footprint),
       "_blank"
     );
   });
