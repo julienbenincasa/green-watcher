@@ -1,4 +1,5 @@
 import { co2 } from "./co2/index.js";
+import { formatBytes, formatGrams } from "./toolbox.js";
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.session.set({ extensionState: "OFF" });
@@ -68,9 +69,9 @@ chrome.webRequest.onCompleted.addListener(
       completedRequestCount++;
       requestSize = requestSize + responseSize;
       var mesDonnees = {
-        requestSize: requestSize,
+        requestSize: formatBytes(requestSize),
         completedRequestCount: completedRequestCount,
-        footprint: oneByte.perByte(requestSize).toFixed(2)
+        footprint: formatGrams(oneByte.perByte(requestSize).toFixed(2))
       };
 
       chrome.runtime.sendMessage({ mesDonnees });
