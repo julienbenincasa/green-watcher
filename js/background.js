@@ -34,6 +34,8 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 let completedRequestCount = 0;
+let requestSize = 0;
+let requestTime = 0;
 
 chrome.webRequest.onCompleted.addListener(
   function (details) {
@@ -46,7 +48,7 @@ chrome.webRequest.onCompleted.addListener(
         return;
       }
       const endTime = performance.now();
-      const requestTime = endTime - requestInfo.startTime;
+      const requestTimeRequest = endTime - requestInfo.startTime;
       const responseHeaders = details.responseHeaders;
       let responseSize = 0;
 
@@ -57,13 +59,19 @@ chrome.webRequest.onCompleted.addListener(
         }
       }
       console.log(
-        `Requête ${details.url}, Temps de requête : ${requestTime} ms, Poids de la réponse : ${responseSize} octets.`
+        `Requête ${details.url}, Temps de requête : ${requestTimeRequest} ms, Poids de la réponse : ${responseSize} octets.`
       );
       delete activeRequests[details.requestId];
-      // Increment the completedRequestCount
       completedRequestCount++;
-      // Send a message to the popup script with the updated count
-      chrome.runtime.sendMessage({ completedRequestCount });
+      requestSize = requestSize + responseSize;
+      requestTime = requestTime + requestTimeRequest;
+      var mesDonnees = {
+        requestSize: requestSize,
+        requestTime: requestTime,
+        completedRequestCount: completedRequestCount,
+      };
+
+      chrome.runtime.sendMessage({ mesDonnees });
     });
   },
   { urls: ["<all_urls>"] },

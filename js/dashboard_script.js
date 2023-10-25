@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const stopButton = document.getElementById("stop");
   const logoOn = document.getElementById("logoOn");
   const logoOff = document.getElementById("logoOff");
+  const checkData = document.getElementById("checkData");
+  let requestSize;
+  let requestTime;
+  let nbrRequest;
 
   const activate = (bool) => {
     chrome.storage.session.set({
@@ -42,10 +46,26 @@ document.addEventListener("DOMContentLoaded", function () {
     sender,
     sendResponse
   ) {
-    if (message.completedRequestCount !== undefined) {
-      // Update the UI with the completed request count
-      document.getElementById("request-counter").textContent =
-        message.completedRequestCount;
+    if (message.mesDonnees.completedRequestCount !== undefined) {
+      requestSize = message.mesDonnees.requestSize;
+      requestTime = message.mesDonnees.requestTime;
+      nbrRequest = message.mesDonnees.completedRequestCount;
+
+      document.getElementById("requestTime").textContent = requestTime;
+      document.getElementById("requestSize").textContent = requestSize;
+      document.getElementById("nbrRequest").textContent = nbrRequest;
     }
+  });
+
+  checkData.addEventListener("click", async () => {
+    window.open(
+      "https://greenwatcher.vercel.app/?nbrRequest=" +
+        nbrRequest +
+        "&requestSize=" +
+        requestSize +
+        "&requestTime=" +
+        requestTime,
+      "_blank"
+    );
   });
 });
