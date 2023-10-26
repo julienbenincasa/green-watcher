@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         48: "../img/logo/48/logo_green.png",
       },
     });
-    logoOn.add;
   });
 
   stopButton.addEventListener("click", async () => {
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         requestSize.formattedValue + " " + requestSize.unit;
       document.getElementById("nbrRequest").textContent = nbrRequest;
       document.getElementById("footprint").textContent =
-        footprint.formattedValue + " " + footprint.unit;
+        footprint.formattedValue + footprint.unit;
     }
   });
 

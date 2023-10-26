@@ -27,7 +27,7 @@
         <div id="imgCounter">
           <img src="./img/logo/logo_green.png" alt="image counter" />
         </div>
-        <p><span id="footprint"></span> CO<sub>2</sub></p>
+        <p><span id="footprint"></span>de CO<sub>2</sub></p>
       </div>
       <div class="mainFooter">
         <p>
@@ -39,31 +39,6 @@
       </div>
     </main>
     <footer></footer>
-    <script>
-      // Ajoutez du JavaScript pour rendre la pop-up déplaçable
-      const header = document.querySelector("main");
-      let isDragging = false;
-      let offsetX, offsetY;
-
-      header.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        offsetX = e.clientX - header.getBoundingClientRect().left;
-        offsetY = e.clientY - header.getBoundingClientRect().top;
-      });
-
-      document.addEventListener("mousemove", (e) => {
-        if (isDragging) {
-          const left = e.clientX - offsetX;
-          const top = e.clientY - offsetY;
-          document.body.style.left = left + "px";
-          document.body.style.top = top + "px";
-        }
-      });
-
-      document.addEventListener("mouseup", () => {
-        isDragging = false;
-      });
-    </script>
     <script defer src="js/dashboard_script.js"></script>
   </body>
 </html>
