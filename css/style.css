@@ -1,14 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /*  --- ---  ALL  --- --- */
-header {
-    cursor: grab;
-    background-color: #0073e6;
-    color: #fff;
-    padding: 5px;
-    text-align: center;
-}
 body {
   background-color: #fff;
   margin: 0;
@@ -65,20 +57,6 @@ header h1 {
 .header_logo {
   justify-content: left;
   width: 70%;
-}
-
-.logo {
-  height: 70%;
-  width: auto;
-  margin-right: 5px;
-}
-
-.header_settings {
-  justify-content: right;
-  width: 30%;
-}
-.header_icon {
-  height: 50%;
 }
 
 #stop {
