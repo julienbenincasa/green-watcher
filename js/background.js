@@ -1,6 +1,12 @@
 import { co2 } from "./co2/index.js";
 import { formatBytes, formatGrams } from "./toolbox.js";
 
+const oneByte = new co2({ model: "1byte" });
+const devMode = false;
+const activeRequests = {};
+let completedRequestCount = 0;
+let requestSize = 0;
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.session.set({ extensionState: "OFF" });
   chrome.action.setIcon({
@@ -10,7 +16,6 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-const activeRequests = {};
 
 // Set up a timer to clean up activeRequests (> 3 min.) every 3 minutes (180,000 milliseconds)
 setInterval(() => {
@@ -36,11 +41,6 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["requestBody"]
 );
 
-let completedRequestCount = 0;
-let requestSize = 0;
-
-const oneByte = new co2({ model: "1byte" });
-
 chrome.webRequest.onCompleted.addListener(
   function (details) {
     chrome.storage.session.get(["extensionState"], (result) => {
@@ -51,8 +51,7 @@ chrome.webRequest.onCompleted.addListener(
       if (!requestInfo) {
         return;
       }
-      const endTime = performance.now();
-      const requestTimeRequest = endTime - requestInfo.startTime;
+      
       const responseHeaders = details.responseHeaders;
       let responseSize = 0;
 
@@ -62,7 +61,13 @@ chrome.webRequest.onCompleted.addListener(
           break;
         }
       }
-      //console.log(`Requête ${details.url}, Temps de requête : ${requestTimeRequest} ms, Poids de la réponse : ${responseSize} octets.`);
+
+      if ( devMode ) {
+        const endTime = performance.now();
+        const requestTimeRequest = endTime - requestInfo.startTime;
+        console.log(`Requête ${details.url}, Temps de requête : ${requestTimeRequest} ms, Poids de la réponse : ${responseSize} octets.`);
+      }
+
       delete activeRequests[details.requestId];
       completedRequestCount++;
       requestSize = requestSize + responseSize;
