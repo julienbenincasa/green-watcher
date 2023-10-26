@@ -22,7 +22,7 @@ function formatGrams(grams) {
         formattedValue: 0,
         unit: 'g'
     }
-    if (grams === 0) return '0g';
+    if (grams === 0) return result;
 
     const k = 1000;
     const units = ['g', 'kg', 't'];
