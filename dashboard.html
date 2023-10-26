@@ -8,18 +8,12 @@
   <body>
     <header>
       <div class="header_logo">
-        <img
-          src="img/logo/logo_green.png"
-          alt="Logo de GreenWatcher"
-          class="logo"
-          id="logoOn"
-        />
-        <img
-          src="img/logo/logo_grey.png"
-          alt="Logo de GreenWatcher"
-          class="logo"
-          id="logoOff"
-        />
+        <a href="#" id="start">
+          <img src="img/start.png" class="icon" alt="icon start" />
+        </a>
+        <a href="#" id="stop">
+          <img src="img/stop.png" class="icon" alt="icon stop" />
+        </a>
         <h1>GreenWatcher</h1>
       </div>
       <div class="header_settings">
@@ -33,32 +27,43 @@
         <div id="imgCounter">
           <img src="./img/logo/logo_green.png" alt="image counter" />
         </div>
-        <p><span id="footprint"></span>CO<sub>2</sub></p>
+        <p><span id="footprint"></span> CO<sub>2</sub></p>
       </div>
       <div class="mainFooter">
         <p>
-          <span id="nbrRequest" class="spanCounter"></span>
+          <span id="nbrRequest" class="spanCounter">0</span>
           requêtes représentent
-          <span id="requestSize" class="spanCounter"></span>
+          <span id="requestSize" class="spanCounter">0 B</span>
+          de données
         </p>
       </div>
     </main>
-    <footer>
-      © 2023 GreenWacther
-      <div class="settings">
-        <a href="#">
-          <img src="img/settings.png" class="icon" alt="icon setting" />
-        </a>
-      </div>
-      <div class="power">
-        <a href="#" id="start">
-          <img src="img/start.png" class="icon" alt="icon start" />
-        </a>
-        <a href="#" id="stop">
-          <img src="img/stop.png" class="icon" alt="icon stop" />
-        </a>
-      </div>
-    </footer>
+    <footer></footer>
+    <script>
+      // Ajoutez du JavaScript pour rendre la pop-up déplaçable
+      const header = document.querySelector("main");
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      header.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - header.getBoundingClientRect().left;
+        offsetY = e.clientY - header.getBoundingClientRect().top;
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          const left = e.clientX - offsetX;
+          const top = e.clientY - offsetY;
+          document.body.style.left = left + "px";
+          document.body.style.top = top + "px";
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+    </script>
     <script defer src="js/dashboard_script.js"></script>
   </body>
 </html>

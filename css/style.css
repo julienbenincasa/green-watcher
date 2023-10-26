@@ -2,12 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /*  --- ---  ALL  --- --- */
-
+header {
+    cursor: grab;
+    background-color: #0073e6;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+}
 body {
   background-color: #fff;
   margin: 0;
   padding: 0;
-  width: 22.5rem;
+  width: 20rem;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -39,10 +45,10 @@ header {
   color: #ffffff;
   text-align: center;
   display: flex;
-  height: 3rem;
+  height: 2rem;
   justify-content: space-between;
   align-items: center;
-  padding: .5rem 1rem;
+  padding: .5rem;
 }
 
 header div {
@@ -53,7 +59,7 @@ header div {
 
 header h1 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .header_logo {
@@ -64,7 +70,7 @@ header h1 {
 .logo {
   height: 70%;
   width: auto;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .header_settings {
@@ -75,24 +81,17 @@ header h1 {
   height: 50%;
 }
 
+#stop {
+  display: none;  
+}
+
 /*  --- ---  MAIN  --- --- */
 
 main {
-  padding: 20px;
+  padding: 5%;
   height: 12.5rem;
 }
 
-.mainFooter{
-  font-weight: 600;
-  color: white;
-  width: 100%;
-  height: 15%;
-  background-color: #5cbc9eb7;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .mainBody{
   height: 85%;
   width: 100%;
@@ -102,8 +101,15 @@ main {
   position: relative;
   flex-direction: column;
 }
-.mainBody .counter p{
+
+.mainBody p{
   position: relative;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #231f20;
 }
 
 .co2{
@@ -121,50 +127,30 @@ main {
   align-items: center;
 }
 
-.mainBody p{
-  height: 15%;
+.mainFooter{
+  color: #231f20;
+  font-size: .7rem;
+  font-weight: 500;
+  width: 100%;
+  padding-top: 5%;
+  min-height: 10%;
+  border-radius: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 #imgCounter img{
   height: 6rem;
+}
+
+.spanCounter{
+  color: #8d6c9f;
 }
 
 /*  --- ---  FOOTER  --- --- */
 
 footer {
-  font-weight: 600;
-  height: 2rem;
+  height: 5px;
   width: 100%;
-  padding: 10px 0;
   background-color: #5cbc9d;
-  color: #ffffff;
-  text-align: center;
-  bottom: 0;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-footer div {
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-footer div.settings {
-  right: 0;
-  top: 0;
-}
-footer div.power {
-  left: 0;
-  top: 0;
-}
-
-#stop {
-  display: none;  
 }

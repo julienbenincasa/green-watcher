@@ -62,16 +62,14 @@ chrome.webRequest.onCompleted.addListener(
           break;
         }
       }
-      console.log(
-        `Requête ${details.url}, Temps de requête : ${requestTimeRequest} ms, Poids de la réponse : ${responseSize} octets.`
-      );
+      //console.log(`Requête ${details.url}, Temps de requête : ${requestTimeRequest} ms, Poids de la réponse : ${responseSize} octets.`);
       delete activeRequests[details.requestId];
       completedRequestCount++;
       requestSize = requestSize + responseSize;
       var mesDonnees = {
         requestSize: formatBytes(requestSize),
         completedRequestCount: completedRequestCount,
-        footprint: formatGrams(oneByte.perByte(requestSize).toFixed(2))
+        footprint: formatGrams(oneByte.perByte(requestSize).toFixed(2)),
       };
 
       chrome.runtime.sendMessage({ mesDonnees });

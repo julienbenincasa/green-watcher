@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const startButton = document.getElementById("start");
   const stopButton = document.getElementById("stop");
   const logoOn = document.getElementById("logoOn");
-  const logoOff = document.getElementById("logoOff");
-  const checkData = document.getElementById("checkData");
   let requestSize;
   let nbrRequest;
 
@@ -13,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     startButton.style.display = bool === true ? "none" : "block";
     stopButton.style.display = bool === true ? "block" : "none";
-    logoOff.style.display = bool === true ? "none" : "block";
-    logoOn.style.display = bool === true ? "block" : "none";
   };
 
   chrome.storage.session.get(["extensionState"]).then((data) => {
@@ -50,9 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
       nbrRequest = message.mesDonnees.completedRequestCount;
       footprint = message.mesDonnees.footprint;
 
-      document.getElementById("requestSize").textContent = requestSize.formattedValue + " " + requestSize.unit;
+      document.getElementById("requestSize").textContent =
+        requestSize.formattedValue + " " + requestSize.unit;
       document.getElementById("nbrRequest").textContent = nbrRequest;
-      document.getElementById("footprint").textContent = footprint.formattedValue + " " + footprint.unit;
+      document.getElementById("footprint").textContent =
+        footprint.formattedValue + " " + footprint.unit;
     }
   });
 
@@ -62,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         nbrRequest +
         "&requestSize=" +
         JSON.stringify(requestSize) +
-        "&footprint=" + 
+        "&footprint=" +
         JSON.stringify(footprint),
       "_blank"
     );
