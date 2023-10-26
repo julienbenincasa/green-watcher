@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const startButton = document.getElementById("start");
   const stopButton = document.getElementById("stop");
-  const logoOn = document.getElementById("logoOn");
+  const imgCounter = document.getElementById("imgCounter");
   let requestSize;
   let nbrRequest;
 
@@ -44,6 +44,44 @@ document.addEventListener("DOMContentLoaded", function () {
       requestSize = message.mesDonnees.requestSize;
       nbrRequest = message.mesDonnees.completedRequestCount;
       footprint = message.mesDonnees.footprint;
+
+      let footprintValue = footprint.formattedValue;
+      if (footprintValue >= 0 && footprintValue < 25) {
+        imgCounter.src = "./img/logo/logo_green.png";
+        chrome.action.setIcon({
+          path: {
+            48: "../img/logo/48/logo_green.png",
+          },
+        });
+      } else if (footprintValue >= 25 && footprintValue < 50) {
+        imgCounter.src = "./img/logo/logo_yellow.png";
+        chrome.action.setIcon({
+          path: {
+            48: "../img/logo/48/logo_yellow.png",
+          },
+        });
+      } else if (footprintValue >= 50 && footprintValue < 75) {
+        imgCounter.src = "./img/logo/logo_orange.png";
+        chrome.action.setIcon({
+          path: {
+            48: "../img/logo/48/logo_orange.png",
+          },
+        });
+      } else if (footprintValue >= 75) {
+        imgCounter.src = "./img/logo/logo_red.png";
+        chrome.action.setIcon({
+          path: {
+            48: "../img/logo/48/logo_red.png",
+          },
+        });
+      } else {
+        imgCounter.src = "./img/logo/logo_grey.png";
+        chrome.action.setIcon({
+          path: {
+            48: "../img/logo/48/logo_grey.png",
+          },
+        });
+      }
 
       document.getElementById("requestSize").textContent =
         requestSize.formattedValue + " " + requestSize.unit;
